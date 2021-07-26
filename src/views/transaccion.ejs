@@ -1,0 +1,64 @@
+<%- include ('partials/_header'); -%>
+
+<div class="container">
+    <h1 style="text-align: center;" class="mt-4">Registro de Transacciones</h1>
+    <div class="row mt-5">
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/add-transacciones" method="post">
+                        <div class="form-group">
+                            <label class="form-label mt-4">Monto:></font></label>
+                            <input type="number" name="monto" placeholder="Monto" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="tipo" class="form-label mt-4"><font style="vertical-align: inherit;">Transacción:</font></label>
+                            <select class="form-select" id="tipo" name="tipo">
+                              <option value="deposito"><font style="vertical-align: inherit;">Deposito</font></option>
+                              <option value="retiro"><font style="vertical-align: inherit;">Retiro</font></option>
+                            </select>
+                          </div>
+                        <div class="form-group">
+                            <label class="form-label mt-4">Cl:</font></label>
+                            <input type="text" name="cedula" placeholder="Cl" class="form-control">
+                        </div>
+                          <div class="mt-4" style="text-align: center;">
+                            <button type="submit" class="btn btn-primary">
+                                Aceptar
+                              </button>
+                          </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col md-7" >
+            <table class="table table-bordered table-hover"style="text-align:center">
+                <thead>
+                    <tr>
+                        <th>ID de transacción</th>
+                        <th>Monto</th>
+                        <th>Tipo</th>
+                        <th>Cédula</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (transaccion) { %>
+                        <% for(var i = 0; i < transaccion.length; i++){ %>
+                            <tr>
+                                <td> <%= transaccion[i].id %> </td>
+                                <td> <%= transaccion[i].monto %> </td>
+                                <td> <%= transaccion[i].tipo %> </td>
+                                <td> <%= transaccion[i].cedula %> </td>
+                            </tr>
+                        <% } %>
+                    <% } %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+<%- include ('partials/_footer'); -%>
